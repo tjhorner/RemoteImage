@@ -13,7 +13,7 @@ import SwiftUI
 public struct RemoteImage<ErrorView: View, ImageView: View, LoadingView: View>: View {
     private let type: RemoteImageType
     private let errorView: (Error) -> ErrorView
-    private let imageView: (Image) -> ImageView
+    private let imageView: (Image, UIImage) -> ImageView
     private let loadingView: () -> LoadingView
 
     @ObservedObject private var service = RemoteImageServiceFactory.makeRemoteImageService()
@@ -28,7 +28,7 @@ public struct RemoteImage<ErrorView: View, ImageView: View, LoadingView: View>: 
             } else {
                 service.state.error.map { errorView($0) }
 
-                service.state.image.map { self.imageView(Image(uiImage: $0)) }
+                service.state.image.map { self.imageView(Image(uiImage: $0), $0) }
             }
         }
     }
