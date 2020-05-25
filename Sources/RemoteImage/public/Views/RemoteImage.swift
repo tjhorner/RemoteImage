@@ -49,7 +49,7 @@ struct RemoteImage_Previews: PreviewProvider {
         let url = URL(string: "https://images.unsplash.com/photo-1524419986249-348e8fa6ad4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80")!
         return RemoteImage(type: .url(url), errorView: { error in
             Text(error.localizedDescription)
-        }, imageView: { image in
+        }, imageView: { image, _ in
             image
         }, loadingView: {
             Text("Loading ...")
