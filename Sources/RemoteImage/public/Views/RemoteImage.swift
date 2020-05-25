@@ -33,7 +33,7 @@ public struct RemoteImage<ErrorView: View, ImageView: View, LoadingView: View>: 
         }
     }
 
-    public init(type: RemoteImageType, @ViewBuilder errorView: @escaping (Error) -> ErrorView, @ViewBuilder imageView: @escaping (Image) -> ImageView, @ViewBuilder loadingView: @escaping () -> LoadingView) {
+    public init(type: RemoteImageType, @ViewBuilder errorView: @escaping (Error) -> ErrorView, @ViewBuilder imageView: @escaping (Image, UIImage) -> ImageView, @ViewBuilder loadingView: @escaping () -> LoadingView) {
         self.type = type
         self.errorView = errorView
         self.imageView = imageView
